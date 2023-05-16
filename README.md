@@ -83,7 +83,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd your-folder
-  git clone https://github.com/sawmon71293/react-group-project.git
+  git clone https://github.com/Rimuru-Tempest-26/React_Group_Project.git
 ```
 
 ### Install
@@ -116,17 +116,14 @@ You can deploy this project using:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Mudassir Nazir**
+👤 **Phone Khaing Hein**
 
-- GitHub: [@Mudassir](https://github.com/Rana-Mudassir)
-- Facebook: [@Facebook](https://www.facebook.com/rana.mudasir.142)
-- LinkedIn: [@LinkedIn](https://www.linkedin.com/in/rana-mudassir-nazir-03541114a/)
+- GitHub: [@Rimuru-Tempest-26](https://github.com/Rimuru-Tempest-26)
+- LinkedIn: [@Phone Khaing Hein](https://www.linkedin.com/in/phone-khaing-hein-759497216/)
 
 👤 **Saw Mon Han**
 
-- GitHub: [@sawmon](https://github.com/sawmon71293)
-- Twitter: [@Twitterhandle](https://twitter.com/sawmonhan)
-- LinkedIn: [@LinkedIn](https://www.linkedin.com/in/saw-mon-han/)
+- GitHub: [@Michel](https://github.com/YoonThiriAung)
 
 ## 🔭 Future Features <a name="features"></a>
 
