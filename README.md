@@ -121,7 +121,7 @@ You can deploy this project using:
 - GitHub: [@Rimuru-Tempest-26](https://github.com/Rimuru-Tempest-26)
 - LinkedIn: [@Phone Khaing Hein](https://www.linkedin.com/in/phone-khaing-hein-759497216/)
 
-👤 **Saw Mon Han**
+👤 **Michel**
 
 - GitHub: [@Michel](https://github.com/YoonThiriAung)
 
