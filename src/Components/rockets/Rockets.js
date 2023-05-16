@@ -2,18 +2,21 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRockets } from '../../features/rocketsSlice';
 import Rocket from './Rocket';
+import '../../Assets/css/rockets.css';
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((store) => store.rocket.rockets);
+  const { rockets } = useSelector((store) => store.rocket);
+
   useEffect(() => {
-    dispatch(getRockets());
-  }, [dispatch]);
+    if (rockets.length === 0) {
+      dispatch(getRockets());
+    }
+  }, [dispatch, rockets]);
+
   return (
-    <section className="rocket-wrapper">
-      <header className="header" />
+    <section>
       <hr />
-      <h2>Rockets</h2>
       <div className="rockets">
         {
           rockets?.map((rocket) => (
@@ -22,7 +25,8 @@ const Rockets = () => {
               id={rocket.id}
               name={rocket.name}
               description={rocket.description}
-              image={rocket.flickr_images}
+              image={rocket.flickr_images[0]}
+              reserved={rocket.reserved}
             />
           ))
         }
