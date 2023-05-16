@@ -5,7 +5,6 @@ const url = 'https://api.spacexdata.com/v3/missions';
 
 const initialState = {
   missions: [],
-  status: false,
 };
 
 const Missions = (res) => res.data.map(({
@@ -14,6 +13,7 @@ const Missions = (res) => res.data.map(({
   mission_id,
   mission_name,
   description,
+  reserved: false,
 }));
 
 export const getMissions = createAsyncThunk('get/missions', async () => {
@@ -24,6 +24,40 @@ export const getMissions = createAsyncThunk('get/missions', async () => {
 const missionsSlice = createSlice({
   name: 'missions',
   initialState,
+  reducers: {
+    reserveMission: (state, action) => {
+      const newId = action.payload;
+      const updatedMissions = state.missions.map((mission) => {
+        if (mission.mission_id === newId) {
+          return {
+            ...mission,
+            reserved: true,
+          };
+        }
+        return mission;
+      });
+      return {
+        ...state,
+        missions: updatedMissions,
+      };
+    },
+    leaveMission: (state, action) => {
+      const missionId = action.payload;
+      const updatedMissions = state.missions.map((mission) => {
+        if (mission.mission_id === missionId) {
+          return {
+            ...mission,
+            reserved: false,
+          };
+        }
+        return mission;
+      });
+      return {
+        ...state,
+        missions: updatedMissions,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getMissions.fulfilled, (state, action) => {
       const State = state;
@@ -31,5 +65,6 @@ const missionsSlice = createSlice({
     });
   },
 });
+export const { reserveMission, leaveMission } = missionsSlice.actions;
 
 export default missionsSlice.reducer;

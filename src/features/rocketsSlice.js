@@ -10,6 +10,7 @@ const formattedRockets = (response) => response.data.map(({
   name,
   description,
   flickr_images,
+  reserved: false,
 }));
 export const getRockets = createAsyncThunk('get/rockets', async () => {
   const response = await axios.get(baseURL);
@@ -18,12 +19,34 @@ export const getRockets = createAsyncThunk('get/rockets', async () => {
 
 const initialState = {
   rockets: [],
-  reserved: false,
+
 };
 
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
+  reducers: {
+    reserveRocket: (state, action) => {
+      const rocketId = action.payload;
+      const updatedRockets = state.rockets.map((rocket) => {
+        if (rocket.id === rocketId) {
+          return { ...rocket, reserved: true };
+        }
+        return rocket;
+      });
+      return { ...state, rockets: updatedRockets };
+    },
+    cancelReservation: (state, action) => {
+      const rocketId = action.payload;
+      const updatedRockets = state.rockets.map((rocket) => {
+        if (rocket.id === rocketId) {
+          return { ...rocket, reserved: false };
+        }
+        return rocket;
+      });
+      return { ...state, rockets: updatedRockets };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getRockets.fulfilled, (state, action) => {
       const states = state;
@@ -31,5 +54,5 @@ const rocketsSlice = createSlice({
     });
   },
 });
-
+export const { reserveRocket, cancelReservation } = rocketsSlice.actions;
 export default rocketsSlice.reducer;
