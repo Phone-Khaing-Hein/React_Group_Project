@@ -7,7 +7,6 @@
 
 .missions,
 .rockets {
-  width: calc(50% - 5px);
   padding: 10px;
 }
 
